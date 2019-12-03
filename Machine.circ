@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project source="2.15.0" version="1.0">
-This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
-<lib desc="#Wiring" name="0">
+  This file is intended to be loaded by Logisim-evolution (https://github.com/reds-heig/logisim-evolution).
+
+  <lib desc="#Wiring" name="0">
     <tool name="Splitter">
       <a name="facing" val="west"/>
       <a name="fanout" val="4"/>
       <a name="incoming" val="1"/>
     </tool>
     <tool name="Pin">
-      <a name="width" val="2"/>
+      <a name="facing" val="north"/>
     </tool>
     <tool name="Probe">
       <a name="facing" val="north"/>
       <a name="radix" val="10unsigned"/>
     </tool>
     <tool name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="width" val="32"/>
+      <a name="facing" val="south"/>
     </tool>
     <tool name="Pull Resistor">
       <a name="facing" val="north"/>
@@ -1140,6 +1140,7 @@ defe 9800 1c40 9000 def0 b00c
     <wire from="(390,600)" to="(660,600)"/>
     <wire from="(250,720)" to="(330,720)"/>
     <wire from="(360,210)" to="(440,210)"/>
+    <wire from="(210,400)" to="(220,400)"/>
     <wire from="(90,380)" to="(220,380)"/>
     <comp lib="0" loc="(180,80)" name="Pin">
       <a name="width" val="32"/>
@@ -1252,10 +1253,6 @@ defe 9800 1c40 9000 def0 b00c
       <a name="label" val="Clk"/>
     </comp>
     <comp lib="0" loc="(180,230)" name="Tunnel">
-      <a name="label" val="Reset"/>
-    </comp>
-    <comp lib="0" loc="(220,400)" name="Tunnel">
-      <a name="facing" val="east"/>
       <a name="label" val="Reset"/>
     </comp>
     <comp lib="0" loc="(490,270)" name="Tunnel">
@@ -1491,6 +1488,10 @@ defe 9800 1c40 9000 def0 b00c
       <a name="facing" val="south"/>
       <a name="width" val="32"/>
       <a name="label" val="A"/>
+    </comp>
+    <comp lib="0" loc="(210,400)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="Reset"/>
     </comp>
   </circuit>
 </project>
