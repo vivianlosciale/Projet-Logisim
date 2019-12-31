@@ -10,7 +10,7 @@ public abstract class AddSub {
 
 	protected int code = 12;
 	
-	protected AddSub(int rn, int rd, int code) {
+	public AddSub(int rn, int rd, int code) {
 		if (rn < 0 || rn > MAX_VALUE_RN)
 			throw new IllegalArgumentException("rn: " + rn);
 		if (rd < 0 || rd > MAX_VALUE_RD)

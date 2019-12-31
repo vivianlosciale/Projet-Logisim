@@ -11,7 +11,7 @@ public abstract class CompareRegister {
 
 	private final int CODE;
 
-	protected CompareRegister(int rm, int rn, int code) {
+	public CompareRegister(int rm, int rn, int code) {
 		if (rm < 0 || rm > MAX_VALUE_RM) {
 			throw new IllegalArgumentException();
 		}

@@ -9,7 +9,7 @@ public class AddSubSPImmediate {
 
 	private final int CODE;
 
-	protected AddSubSPImmediate(int imm7, int code) {
+	public AddSubSPImmediate(int imm7, int code) {
 		if (imm7 < 0 || imm7 > MAX_VALUE_IMM7)
 			throw new IllegalArgumentException("imm7: " + imm7);
 

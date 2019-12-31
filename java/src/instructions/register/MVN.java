@@ -11,7 +11,7 @@ public class MVN {
 
 	private final int CODE = 271;
 
-	protected MVN (int rm, int rd) {
+	public MVN (int rm, int rd) {
 		if (rm < 0 || rm > MAX_VALUE_RM) {
 			throw new IllegalArgumentException();
 		}

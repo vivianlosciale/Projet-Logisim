@@ -9,7 +9,7 @@ public abstract class AddSubRegister extends AddSub {
 
 	private final int RM;
 
-	protected AddSubRegister(int rm, int rn, int rd, int code) {
+	public AddSubRegister(int rm, int rn, int rd, int code) {
 		super(rn, rd, code);
 		if (code < 0 || code > MAX_VALUE_CODE)
 			throw new IllegalArgumentException("code: " + code);

@@ -10,7 +10,7 @@ public abstract class AddSubImmediate extends AddSub {
 
 	private final int IMM3;
 
-	protected AddSubImmediate(int imm3, int rn, int rd, int code) {
+	public AddSubImmediate(int imm3, int rn, int rd, int code) {
 		super(rn, rd, code);
 		if (code < 0 || code > MAX_VALUE_CODE || code < MIN_VALUE_CODE)
 			throw new IllegalArgumentException("code: " + code);

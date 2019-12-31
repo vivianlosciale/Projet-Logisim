@@ -11,7 +11,7 @@ public abstract class StoreLoadImmediate {
 
 	private final int CODE;
 
-	protected StoreLoadImmediate(int rt, int imm8, int code) {
+	public StoreLoadImmediate(int rt, int imm8, int code) {
 		if (rt < 0 || rt > MAX_VALUE_RT)
 			throw new IllegalArgumentException("rt: " + rt);
 		if (imm8 < 0 || imm8 > MAX_VALUE_IMM8)

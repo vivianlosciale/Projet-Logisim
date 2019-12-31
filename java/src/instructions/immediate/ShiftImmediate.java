@@ -20,7 +20,7 @@ public abstract class ShiftImmediate {
 
 	private final String CODE;
 
-	protected ShiftImmediate(int imm5, int rm, int rd, int code) {
+	public ShiftImmediate(int imm5, int rm, int rd, int code) {
 		if (imm5 < 0 || imm5 > MAX_VALUE_IMM5)
 			throw new IllegalArgumentException("imm5: " + imm5);
 		if (rm < 0 || rm > MAX_VALUE_RM)

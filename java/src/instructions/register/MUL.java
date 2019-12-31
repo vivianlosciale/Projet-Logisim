@@ -12,7 +12,7 @@ public class MUL {
 
 	private final int CODE = 269;
 
-	protected MUL(int rn, int rdm) {
+	public MUL(int rn, int rdm) {
 		if (rdm < 0 || rdm > MAX_VALUE_RDM) {
 			throw new IllegalArgumentException();
 		}
