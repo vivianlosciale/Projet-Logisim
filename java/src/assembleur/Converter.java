@@ -16,7 +16,11 @@ public class Converter {
 	 */
 	public static String binaryToHexa(String binaryString) {
 		int i = Integer.parseUnsignedInt(binaryString, 2);
-		return Integer.toHexString(i);
+		String hexa=Integer.toHexString(i);
+		while(hexa.length()<4) {
+			hexa="0"+hexa;
+		}
+		return hexa;
 	}
 
 	/**
