@@ -17,6 +17,8 @@ public class CreateIns {
 			return null;
 		}
 		line = line.substring(1, line.length());
+		if (line.startsWith("b") && !line.equals("bics"))
+			return b(line);
 		switch (line.split("	")[0]) {
 		case "sub":
 			return sub(line.substring(4, line.length()));
@@ -38,27 +40,14 @@ public class CreateIns {
 			return lsl(line.substring(4, line.length()));
 		case "mul":
 			return mul(line.substring(4, line.length()));
-		case "b":
-			return b(line);
-		case "blt":
-			return blt(line);
-		case "bne":
-			return bne(line);
 		default:
+			System.out.println(line);
 			return null;
 		}
 	}
 
-	private Object bne(String phrase) {
-		throw new NullPointerException("une des instructions ne peut pas etre traduite:"+phrase);
-	}
-
-	private Object blt(String phrase) {
-		throw new NullPointerException("une des instructions ne peut pas etre traduite:"+phrase);
-	}
-
 	private Object b(String phrase) {
-		throw new NullPointerException("une des instructions ne peut pas etre traduite:"+phrase);
+		return null;
 	}
 
 	private Object mul(String phrase) {
@@ -75,8 +64,8 @@ public class CreateIns {
 	}
 
 	private Object cmp(String phrase) {
-		int rm = Integer.parseInt(phrase.split(",")[0].substring(1));
-		int rn = Integer.parseInt(phrase.split(",")[1].substring(2));
+		int rn = Integer.parseInt(phrase.split(",")[0].substring(1));
+		int rm = Integer.parseInt(phrase.split(",")[1].substring(2));
 		return new CMP(rm, rn);
 	}
 
