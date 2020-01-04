@@ -11,7 +11,7 @@ public class B {
 	private final int MAX_VALUE_IMM8 = 255;
 
 	public static final List<String> SYMBOLES = Collections.unmodifiableList(
-			Arrays.asList("EQ", "NE", "CS", "CC", "MI", "PL", "VS", "VC", "HI", "LS", "GE", "LT", "GT", "LE", "AL"));
+			Arrays.asList("eq", "ne", "cs", "cc", "mi", "pl", "vs", "vc", "hi", "ls", "ge", "lt", "gt", "le", "al"));
 
 	private final int COND;
 	private final int IMM8;
@@ -33,7 +33,7 @@ public class B {
 	}
 	
 	public static int getCodeFromString(String cond) {
-		if(cond.isBlank()) return SYMBOLES.indexOf("AL");
+		if(cond.isBlank()) return SYMBOLES.indexOf("al");
 		if(SYMBOLES.contains(cond)) return SYMBOLES.indexOf(cond);
 		return -1;
 	}

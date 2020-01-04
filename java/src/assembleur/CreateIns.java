@@ -1,7 +1,10 @@
 package assembleur;
 
 
+import java.util.List;
+
 import instructions.immediate.ADDSP;
+import instructions.immediate.B;
 import instructions.immediate.LDR;
 import instructions.immediate.LSL;
 import instructions.immediate.MOV;
@@ -14,13 +17,18 @@ import instructions.register.SUB;
 
 public class CreateIns {
 
-	public Object create(String line) {
+	List<String> register;
+	public CreateIns(List<String> register) {
+		this.register=register;
+	}
+
+	public Object create(String line, int pos) {
 		if (!line.startsWith("	")) {
 			return null;
 		}
+		if (line.startsWith("	b") && !line.equals("	bics"))
+			return b(line,pos);
 		line = line.substring(1, line.length());
-		if (line.startsWith("b") && !line.equals("bics"))
-			return b(line);
 		switch (line.split("	")[0]) {
 		case "sub":
 			return sub(line.substring(4, line.length()));
@@ -70,13 +78,47 @@ public class CreateIns {
 		int rd = Integer.parseInt(phrase.split(",")[0].substring(1));
 		int rn = Integer.parseInt(phrase.split(",")[1].substring(2));
 		int rm = Integer.parseInt(phrase.split(",")[2].substring(2));
-		System.out.println(new SUB(1, 0, 0).toString()+"----------------");
 		return new SUB(rm, rn, rd);
 	}
 
-	private Object b(String phrase) {
-		System.out.println("b");
-		return null;
+	private Object b(String phrase, int pos) {
+		if(phrase.split("	")[1].length()==1)
+			return new B("",calculeplace(phrase.split("	")[2],pos));
+		return new B(phrase.substring(2, 4),calculeplace(phrase.split("	")[2],pos));
+	}
+
+	private int calculeplace(String label,int current) {
+		int posl=0;
+		int comm=0;
+		for (String string : register) {
+			if(string.startsWith(label))
+				posl=register.indexOf(string);
+		}
+		if (current>posl) {
+			comm=calculcomm(posl+1,current);
+			return 256-41-2;
+		}
+			
+		else {
+			comm=calculcomm(current,posl);
+			if(posl-current-comm-2<0) {
+				return 256+posl-current-comm-2;
+			}
+			else {
+				return posl-current-comm-2;
+			}
+			
+		}
+	}
+
+	private int calculcomm(int minus, int max) {
+		int comm=0;
+		for (int i = minus; i <= max; i++) {
+			if(register.get(i).startsWith(".") || register.get(i).startsWith("	.") ) {
+				comm++;
+			}
+		}
+		return comm;
 	}
 
 	private Object mul(String phrase) {
@@ -98,7 +140,7 @@ public class CreateIns {
 		return new CMP(rm, rn);
 	}
 
-	private static Object mov(String phrase) {
+	private Object mov(String phrase) {
 		System.out.println("mov");
 		return null;
 	}
