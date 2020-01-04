@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import instructions.register.ADD;
 import instructions.register.CMP;
+import instructions.register.SUB;
 
 public class Main {
 	public static void main(String[] args) {

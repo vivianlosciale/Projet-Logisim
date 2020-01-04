@@ -21,6 +21,6 @@ public abstract class AddSub {
 		RN = rn;
 		RD = rd;
 		
-		code+=code;
+		this.code+=code;
 	}
 }
