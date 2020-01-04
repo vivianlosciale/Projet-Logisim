@@ -1,14 +1,16 @@
 package assembleur;
 
-import instructions.immediate.ADD;
+
 import instructions.immediate.ADDSP;
 import instructions.immediate.LDR;
 import instructions.immediate.LSL;
 import instructions.immediate.MOV;
 import instructions.immediate.STR;
 import instructions.immediate.SUBSP;
+import instructions.register.ADD;
 import instructions.register.CMP;
 import instructions.register.MUL;
+import instructions.register.SUB;
 
 public class CreateIns {
 
@@ -22,6 +24,8 @@ public class CreateIns {
 		switch (line.split("	")[0]) {
 		case "sub":
 			return sub(line.substring(4, line.length()));
+		case "subs":
+			return subs(line.substring(5, line.length()));
 		case "movs":
 			return movs(line.substring(5, line.length()));
 		case "str":
@@ -38,15 +42,40 @@ public class CreateIns {
 			return cmp(line.substring(4, line.length()));
 		case "lsl":
 			return lsl(line.substring(4, line.length()));
+		case "lsls":
+			return lsls(line.substring(5, line.length()));
 		case "mul":
 			return mul(line.substring(4, line.length()));
+		case "muls":
+			return muls(line.substring(5, line.length()));
 		default:
 			System.out.println(line);
 			return null;
 		}
 	}
 
+	private Object lsls(String phrase) {
+		int rm=Integer.parseInt(phrase.split(",")[1].substring(2));;
+		int rdn=Integer.parseInt(phrase.split(",")[0].substring(1));;
+		return new instructions.register.LSL(rm, rdn);
+	}
+
+	private Object muls(String phrase) {
+		int rn = Integer.parseInt(phrase.split(",")[1].substring(2));
+		int rdm = Integer.parseInt(phrase.split(",")[0].substring(1));
+		return new MUL(rn, rdm);
+	}
+
+	private Object subs(String phrase) {
+		int rd = Integer.parseInt(phrase.split(",")[0].substring(1));
+		int rn = Integer.parseInt(phrase.split(",")[1].substring(2));
+		int rm = Integer.parseInt(phrase.split(",")[2].substring(2));
+		System.out.println(new SUB(1, 0, 0).toString()+"----------------");
+		return new SUB(rm, rn, rd);
+	}
+
 	private Object b(String phrase) {
+		System.out.println("b");
 		return null;
 	}
 
@@ -70,15 +99,15 @@ public class CreateIns {
 	}
 
 	private static Object mov(String phrase) {
-		// System.out.println("mov");
+		System.out.println("mov");
 		return null;
 	}
 
 	private Object adds(String phrase) {
 		int rd = Integer.parseInt(phrase.split(",")[0].substring(1));
 		int rn = Integer.parseInt(phrase.split(",")[1].substring(2));
-		int imm3 = Integer.parseInt(phrase.split(",")[2].substring(2));
-		return new ADD(imm3, rn, rd);
+		int rm = Integer.parseInt(phrase.split(",")[2].substring(2));
+		return new ADD(rm, rn, rd);
 	}
 
 	private Object str(String phrase) {
