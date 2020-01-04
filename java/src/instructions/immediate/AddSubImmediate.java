@@ -22,7 +22,7 @@ public abstract class AddSubImmediate extends AddSub {
 	
 	@Override
 	public String toString() {
-		return Converter.integerToBinary(code, 5) + Converter.integerToBinary(IMM3, 3) + Converter.integerToBinary(RN, 3)
+		return Converter.integerToBinary(code, 7) + Converter.integerToBinary(IMM3, 3) + Converter.integerToBinary(RN, 3)
 				+ Converter.integerToBinary(RD, 3);
 	}
 }
